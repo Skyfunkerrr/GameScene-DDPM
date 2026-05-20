@@ -50,8 +50,9 @@ Each class folder contains PNG frames extracted from rollouts.
 
 ## 1. Build the dataset (Procgen → PNGs)
 
-### Step 1 — Record rollouts (single GIF)
-
+### How record_procgen_rollout.py works
+This is only an example aimed to explain how record_procgen_rollout.py works.
+Full workflow is contained in the following collect.py.
 [Procgen](https://github.com/openai/procgen) rollout to a GIF:
 
 ```bash
@@ -60,7 +61,7 @@ python record_procgen_rollout.py --env coinrun --steps 500 --out rollouts/coinru
 
 Useful flags: `--env`, `--steps`, `--out`, `--start-level`, `--num-levels`, `--distribution-mode`, `--seed`.
 
-### Step 2 — Batch record (all three games)
+### Step 1 — Batch record (all three games)
 
 `collect_all.py` calls `record_procgen_rollout.py` for **coinrun, starpilot, caveflyer** and writes GIFs under `multigames_rollouts/`.
 
@@ -76,7 +77,7 @@ Then:
 python collect_all.py
 ```
 
-### Step 3 — Extract frames to class folders
+### Step 2 — Extract frames to class folders
 
 `extract.py` splits each GIF into PNGs under `multigames_datasets/<game>/`.
 
